@@ -230,7 +230,7 @@ def main():
 
     strings = Path(args.strings)
     tools_dir = Path(args.tools_dir)
-    bdfconv = tools_dir / "bdfconv"
+    bdfconv = Path(os.environ.get("MOMENTUM_BDFCONV", str(tools_dir / "bdfconv")))
     bdf = Path(args.bdf) if args.bdf else None
     bdf_dir = Path(args.bdf_dir) if args.bdf_dir else None
     if bool(bdf) == bool(bdf_dir):
