@@ -18,7 +18,7 @@ void nfc_scene_slix_unlock_success_on_enter(void* context) {
     widget_add_string_element(
         widget, 0, 0, AlignLeft, AlignTop, FontPrimary, NFC_UI_TEXT("SLIX Unlocked!", "SLIX 已解锁!"));
 
-    FuriString* temp_str = furi_string_alloc_set_str("UID:");
+    FuriString* temp_str = furi_string_alloc_set_str(NFC_UI_TEXT("UID:", "UID:"));
     size_t uid_len = 0;
     const uint8_t* uid = nfc_device_get_uid(instance->nfc_device, &uid_len);
     for(size_t i = 0; i < uid_len; i++) {

@@ -37,7 +37,7 @@ void nfc_scene_delete_on_enter(void* context) {
     size_t uid_len;
     const uint8_t* uid = nfc_device_get_uid(nfc->nfc_device, &uid_len);
 
-    furi_string_set(temp_str, "UID:");
+    furi_string_set(temp_str, NFC_UI_TEXT("UID:", "UID:"));
     for(size_t i = 0; i < uid_len; i++) {
         furi_string_cat_printf(temp_str, " %02X", uid[i]);
     }

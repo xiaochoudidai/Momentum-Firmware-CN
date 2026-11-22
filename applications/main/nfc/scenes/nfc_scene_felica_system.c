@@ -39,7 +39,7 @@ void nfc_scene_felica_system_on_enter(void* context) {
         if(!is_public) {
             continue;
         }
-        furi_string_printf(label, "Readable serv %04X", service->code);
+        furi_string_printf(label, NFC_UI_TEXT("Readable serv %04X", "可读服务 %04X"), service->code);
         submenu_add_item(
             submenu,
             furi_string_get_cstr(label),
@@ -84,7 +84,10 @@ bool nfc_scene_felica_system_on_event(void* context, SceneManagerEvent event) {
                 furi_string_reset(nfc->text_box_store);
 
                 const FelicaService* service = simple_array_cget(system->services, service_ind);
-                furi_string_cat_printf(nfc->text_box_store, "Service 0x%04X\n", service->code);
+                furi_string_cat_printf(
+                    nfc->text_box_store,
+                    NFC_UI_TEXT("Service 0x%04X\n", "服务 0x%04X\n"),
+                    service->code);
                 nfc_more_info_render_felica_blocks(
                     data, system, nfc->text_box_store, service->code);
 

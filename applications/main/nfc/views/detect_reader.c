@@ -47,7 +47,8 @@ static void detect_reader_draw_callback(Canvas* canvas, void* model) {
         canvas_draw_str_aligned(
             canvas, 51, 22, AlignLeft, AlignTop, NFC_UI_TEXT("Emulating...", "模拟中..."));
         canvas_set_font(canvas, FontSecondary);
-        canvas_draw_str_aligned(canvas, 51, 35, AlignLeft, AlignTop, "MIFARE MFkey32");
+        canvas_draw_str_aligned(
+            canvas, 51, 35, AlignLeft, AlignTop, NFC_UI_TEXT("MIFARE MFkey32", "MIFARE MFkey32"));
     } else {
         if(m->state == DetectReaderStateDone) {
             canvas_set_font(canvas, FontPrimary);
@@ -190,7 +191,7 @@ void detect_reader_set_uid(DetectReader* detect_reader, uint8_t* uid, uint8_t ui
         detect_reader->view,
         DetectReaderViewModel * model,
         {
-            furi_string_set_str(model->uid_str, "UID:");
+            furi_string_set_str(model->uid_str, NFC_UI_TEXT("UID:", "UID:"));
             for(size_t i = 0; i < uid_len; i++) {
                 furi_string_cat_printf(model->uid_str, " %02X", uid[i]);
             }

@@ -33,9 +33,10 @@ void nfc_scene_generate_info_on_enter(void* context) {
         scene_manager_get_scene_state(instance->scene_manager, NfcSceneGenerateInfo);
     const char* name = nfc_data_generator_get_name(type);
     widget_add_string_element(widget, 0, 0, AlignLeft, AlignTop, FontPrimary, name);
-    widget_add_string_element(widget, 0, 13, AlignLeft, AlignTop, FontSecondary, "NFC-A");
+    widget_add_string_element(
+        widget, 0, 13, AlignLeft, AlignTop, FontSecondary, NFC_UI_TEXT("NFC-A", "NFC-A"));
 
-    FuriString* temp_str = furi_string_alloc_printf("UID:");
+    FuriString* temp_str = furi_string_alloc_printf(NFC_UI_TEXT("UID:", "UID:"));
     // Append UID
     for(int i = 0; i < iso14443_3a_data->uid_len; i++) {
         furi_string_cat_printf(temp_str, " %02X", iso14443_3a_data->uid[i]);

@@ -35,7 +35,7 @@ void nfc_scene_mf_desfire_app_on_enter(void* context) {
     for(uint32_t i = 0; i < simple_array_get_count(app->file_ids); ++i) {
         const MfDesfireFileId file_id =
             *(const MfDesfireFileId*)simple_array_cget(app->file_ids, i);
-        furi_string_printf(label, "File %d", file_id);
+        furi_string_printf(label, NFC_UI_TEXT("File %d", "文件 %d"), file_id);
         submenu_add_item(
             nfc->submenu,
             furi_string_get_cstr(label),

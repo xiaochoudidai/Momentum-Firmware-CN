@@ -64,12 +64,12 @@ static void dict_attack_draw_mf_classic(Canvas* canvas, DictAttackViewModel* m) 
     }
 
     if(m->prng_type == MfClassicPrngTypeHard) {
-        furi_string_cat(m->header, " (Hard)");
+        furi_string_cat(m->header, NFC_UI_TEXT(" (Hard)", " (Hard)"));
     }
 
     if(m->backdoor != MfClassicBackdoorNone && m->backdoor != MfClassicBackdoorUnknown) {
         if(m->nested_phase != MfClassicNestedPhaseNone) {
-            furi_string_cat(m->header, " (Backdoor)");
+            furi_string_cat(m->header, NFC_UI_TEXT(" (Backdoor)", " (后门)"));
         } else {
             furi_string_set(m->header, NFC_UI_TEXT("Backdoor Read", "后门读取"));
         }

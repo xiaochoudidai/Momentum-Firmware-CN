@@ -21,7 +21,8 @@ void nfc_scene_mf_classic_show_keys_on_enter(void* context) {
     furi_string_reset(instance->text_box_store);
     nfc_append_filename_string_when_present(instance, instance->text_box_store);
 
-    furi_string_cat_printf(instance->text_box_store, "\e#Found MFC Keys:");
+    furi_string_cat_printf(
+        instance->text_box_store, NFC_UI_TEXT("\e#Found MFC Keys:", "\e#已找到 MFC 密钥:"));
 
     uint8_t num_sectors = mf_classic_get_total_sectors_num(mfc_data->type);
     uint8_t found_keys_a = 0, found_keys_b = 0;
@@ -32,7 +33,10 @@ void nfc_scene_mf_classic_show_keys_on_enter(void* context) {
         bool key_b = FURI_BIT(mfc_data->key_b_mask, i);
 
         if(key_a || key_b) {
-            furi_string_cat_printf(instance->text_box_store, "\n  -> Sector %d\n\e*AccBits:", i);
+            furi_string_cat_printf(
+                instance->text_box_store,
+                NFC_UI_TEXT("\n  -> Sector %d\n\e*AccBits:", "\n  -> 扇区 %d\n\e*访问位:"),
+                i);
             for(uint8_t j = 0; j < MF_CLASSIC_ACCESS_BYTES_SIZE; j++) {
                 furi_string_cat_printf(
                     instance->text_box_store, " %02X", sec_tr->access_bits.data[j]);
@@ -41,13 +45,13 @@ void nfc_scene_mf_classic_show_keys_on_enter(void* context) {
 
         if(key_a) {
             found_keys_a++;
-            furi_string_cat_printf(instance->text_box_store, "\n\e*A:");
+            furi_string_cat_printf(instance->text_box_store, NFC_UI_TEXT("\n\e*A:", "\n\e*A:"));
             for(uint8_t j = 0; j < MF_CLASSIC_KEY_SIZE; j++)
                 furi_string_cat_printf(instance->text_box_store, " %02X", sec_tr->key_a.data[j]);
         }
         if(key_b) {
             found_keys_b++;
-            furi_string_cat_printf(instance->text_box_store, "\n\e*B:");
+            furi_string_cat_printf(instance->text_box_store, NFC_UI_TEXT("\n\e*B:", "\n\e*B:"));
             for(uint8_t j = 0; j < MF_CLASSIC_KEY_SIZE; j++)
                 furi_string_cat_printf(instance->text_box_store, " %02X", sec_tr->key_b.data[j]);
         }
@@ -55,7 +59,9 @@ void nfc_scene_mf_classic_show_keys_on_enter(void* context) {
 
     furi_string_cat_printf(
         instance->text_box_store,
-        "\nTotal keys found:\n -> %d/%d A keys\n -> %d/%d B keys",
+        NFC_UI_TEXT(
+            "\nTotal keys found:\n -> %d/%d A keys\n -> %d/%d B keys",
+            "\n密钥统计:\n -> %d/%d 个 A 密钥\n -> %d/%d 个 B 密钥"),
         found_keys_a,
         num_sectors,
         found_keys_b,
