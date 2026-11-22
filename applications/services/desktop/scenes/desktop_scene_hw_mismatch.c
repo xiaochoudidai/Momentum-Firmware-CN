@@ -21,12 +21,17 @@ void desktop_scene_hw_mismatch_on_enter(void* context) {
     snprintf(
         text_buffer,
         256,
-        "HW target: %d\nFW target: %d",
+        DESKTOP_UI_TEXT("HW target: %d\nFW target: %d", "硬件目标: %d\n固件目标: %d"),
         furi_hal_version_get_hw_target(),
         version_get_target(NULL));
     popup_set_context(popup, desktop);
     popup_set_header(
-        popup, "!!!! HW Mismatch !!!!", 64, 12 + STATUS_BAR_Y_SHIFT, AlignCenter, AlignBottom);
+        popup,
+        DESKTOP_UI_TEXT("!!!! HW Mismatch !!!!", "!!!! 硬件不匹配 !!!!"),
+        64,
+        12 + STATUS_BAR_Y_SHIFT,
+        AlignCenter,
+        AlignBottom);
     popup_set_text(popup, text_buffer, 64, 33 + STATUS_BAR_Y_SHIFT, AlignCenter, AlignCenter);
     popup_set_callback(popup, desktop_scene_hw_mismatch_callback);
     view_dispatcher_switch_to_view(desktop->view_dispatcher, DesktopViewIdPopup);

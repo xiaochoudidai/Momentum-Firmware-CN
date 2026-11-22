@@ -16,7 +16,7 @@ void desktop_scene_fault_on_enter(void* context) {
     popup_set_context(popup, desktop);
     popup_set_header(
         popup,
-        "Flipper crashed\n and was rebooted",
+        DESKTOP_UI_TEXT("Flipper crashed\n and was rebooted", "Flipper 崩溃\n并已重启"),
         64,
         14 + STATUS_BAR_Y_SHIFT,
         AlignCenter,
