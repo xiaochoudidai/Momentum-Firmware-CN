@@ -79,7 +79,7 @@ void gpio_scene_start_on_enter(void* context) {
     }
 
     variable_item_list_add(var_item_list, GPIO_UI_TEXT("I2C-Scanner", "I2C 扫描器"), 0, NULL, NULL);
-    variable_item_list_add(var_item_list, "I2C-SFP", 0, NULL, NULL);
+    variable_item_list_add(var_item_list, GPIO_UI_TEXT("I2C-SFP", "I2C-SFP"), 0, NULL, NULL);
 
     variable_item_list_set_selected_item(
         var_item_list, scene_manager_get_scene_state(app->scene_manager, GpioSceneStart));

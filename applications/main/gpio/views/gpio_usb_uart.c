@@ -31,8 +31,8 @@ static void gpio_usb_uart_draw_callback(Canvas* canvas, void* _model) {
 
     canvas_set_font(canvas, FontPrimary);
     canvas_draw_str(canvas, 2, 9, GPIO_UI_TEXT("USB Serial", "USB 串口"));
-    canvas_draw_str(canvas, 3, 25, "TX:");
-    canvas_draw_str(canvas, 3, 42, "RX:");
+    canvas_draw_str(canvas, 3, 25, GPIO_UI_TEXT("TX:", "TX:"));
+    canvas_draw_str(canvas, 3, 42, GPIO_UI_TEXT("RX:", "RX:"));
 
     canvas_set_font(canvas, FontSecondary);
     snprintf(temp_str, sizeof(temp_str), GPIO_UI_TEXT("COM PORT:%u", "串口:%u"), model->vcp_port);
@@ -50,13 +50,13 @@ static void gpio_usb_uart_draw_callback(Canvas* canvas, void* _model) {
 
     if(model->tx_cnt < 100000000) {
         canvas_set_font(canvas, FontSecondary);
-        canvas_draw_str_aligned(canvas, 127, 24, AlignRight, AlignBottom, "B.");
+        canvas_draw_str_aligned(canvas, 127, 24, AlignRight, AlignBottom, GPIO_UI_TEXT("B.", "B."));
         canvas_set_font(canvas, FontKeyboard);
         snprintf(temp_str, sizeof(temp_str), "%lu", model->tx_cnt);
         canvas_draw_str_aligned(canvas, 116, 24, AlignRight, AlignBottom, temp_str);
     } else {
         canvas_set_font(canvas, FontSecondary);
-        canvas_draw_str_aligned(canvas, 127, 24, AlignRight, AlignBottom, "KiB.");
+        canvas_draw_str_aligned(canvas, 127, 24, AlignRight, AlignBottom, GPIO_UI_TEXT("KiB.", "KiB."));
         canvas_set_font(canvas, FontKeyboard);
         snprintf(temp_str, sizeof(temp_str), "%lu", model->tx_cnt / 1024);
         canvas_draw_str_aligned(canvas, 111, 24, AlignRight, AlignBottom, temp_str);
@@ -64,13 +64,13 @@ static void gpio_usb_uart_draw_callback(Canvas* canvas, void* _model) {
 
     if(model->rx_cnt < 100000000) {
         canvas_set_font(canvas, FontSecondary);
-        canvas_draw_str_aligned(canvas, 127, 41, AlignRight, AlignBottom, "B.");
+        canvas_draw_str_aligned(canvas, 127, 41, AlignRight, AlignBottom, GPIO_UI_TEXT("B.", "B."));
         canvas_set_font(canvas, FontKeyboard);
         snprintf(temp_str, sizeof(temp_str), "%lu", model->rx_cnt);
         canvas_draw_str_aligned(canvas, 116, 41, AlignRight, AlignBottom, temp_str);
     } else {
         canvas_set_font(canvas, FontSecondary);
-        canvas_draw_str_aligned(canvas, 127, 41, AlignRight, AlignBottom, "KiB.");
+        canvas_draw_str_aligned(canvas, 127, 41, AlignRight, AlignBottom, GPIO_UI_TEXT("KiB.", "KiB."));
         canvas_set_font(canvas, FontKeyboard);
         snprintf(temp_str, sizeof(temp_str), "%lu", model->rx_cnt / 1024);
         canvas_draw_str_aligned(canvas, 111, 41, AlignRight, AlignBottom, temp_str);
