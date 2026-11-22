@@ -15,6 +15,7 @@ SOURCE_SCAN_ROOTS = (
     Path("applications/external"),
     Path("applications/services"),
     Path("applications/settings"),
+    Path("applications/system"),
     Path("lib"),
 )
 ANIMATION_TEXT_ROOT = Path("assets/dolphin")

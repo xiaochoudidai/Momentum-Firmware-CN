@@ -29,15 +29,21 @@ void hid_scene_unpair_on_enter(void* context) {
     dialog_ex_reset(app->dialog);
     dialog_ex_set_result_callback(app->dialog, hid_scene_unpair_dialog_callback);
     dialog_ex_set_context(app->dialog, app);
-    dialog_ex_set_header(app->dialog, "Unpair All Devices?", 64, 3, AlignCenter, AlignTop);
+    dialog_ex_set_header(
+        app->dialog, HID_UI_TEXT("Unpair All Devices?", "取消所有设备配对?"), 64, 3, AlignCenter, AlignTop);
     dialog_ex_set_text(
-        app->dialog, "All previous pairings\nwill be lost!", 64, 22, AlignCenter, AlignTop);
-    dialog_ex_set_left_button_text(app->dialog, "Back");
-    dialog_ex_set_right_button_text(app->dialog, "Unpair");
+        app->dialog,
+        HID_UI_TEXT("All previous pairings\nwill be lost!", "所有已配对设备\n将被清除!"),
+        64,
+        22,
+        AlignCenter,
+        AlignTop);
+    dialog_ex_set_left_button_text(app->dialog, HID_UI_TEXT("Back", "返回"));
+    dialog_ex_set_right_button_text(app->dialog, HID_UI_TEXT("Unpair", "取消配对"));
 
     // Un-pair success popup view
     popup_set_icon(app->popup, 48, 6, &I_DolphinDone_80x58);
-    popup_set_header(app->popup, "Done", 14, 15, AlignLeft, AlignTop);
+    popup_set_header(app->popup, HID_UI_TEXT("Done", "完成"), 14, 15, AlignLeft, AlignTop);
     popup_set_timeout(app->popup, 1500);
     popup_set_context(app->popup, app);
     popup_set_callback(app->popup, hid_scene_unpair_popup_callback);

@@ -35,27 +35,30 @@ static void hid_mouse_jiggler_stealth_draw_callback(Canvas* canvas, void* contex
     // Title "Mouse Jiggler"
     canvas_set_font(canvas, FontPrimary);
 #ifdef HID_TRANSPORT_BLE
-    elements_multiline_text_aligned(canvas, 17, 4, AlignLeft, AlignTop, "Mouse Jiggler Stealth");
+    elements_multiline_text_aligned(canvas, 17, 4, AlignLeft, AlignTop, HID_UI_TEXT("Mouse Jiggler Stealth", "鼠标抖动器(隐藏)"));
 #else
-    elements_multiline_text_aligned(canvas, 10, 2, AlignLeft, AlignTop, "Mouse Jiggler Stealth");
+    elements_multiline_text_aligned(canvas, 10, 2, AlignLeft, AlignTop, HID_UI_TEXT("Mouse Jiggler Stealth", "鼠标抖动器(隐藏)"));
 #endif
 
     // Display the current min interval in minutes
     canvas_set_font(canvas, FontSecondary); // Assuming there's a smaller font available
-    FuriString* min_interval_str = furi_string_alloc_printf("Min: %d min", model->min_interval);
+    FuriString* min_interval_str =
+        furi_string_alloc_printf(HID_UI_TEXT("Min: %d min", "最小: %d 分"), model->min_interval);
     elements_multiline_text_aligned(
         canvas, 0, 16, AlignLeft, AlignTop, furi_string_get_cstr(min_interval_str));
     furi_string_free(min_interval_str);
 
     // Display the current max interval in minutes
-    FuriString* max_interval_str = furi_string_alloc_printf("Max: %d min", model->max_interval);
+    FuriString* max_interval_str =
+        furi_string_alloc_printf(HID_UI_TEXT("Max: %d min", "最大: %d 分"), model->max_interval);
     elements_multiline_text_aligned(
         canvas, 0, 28, AlignLeft, AlignTop, furi_string_get_cstr(max_interval_str));
     furi_string_free(max_interval_str);
 
     // "Press Start to jiggle"
     canvas_set_font(canvas, FontPrimary);
-    elements_multiline_text(canvas, AlignLeft, 50, "Press Start\nto jiggle");
+    elements_multiline_text(
+        canvas, AlignLeft, 50, HID_UI_TEXT("Press Start\nto jiggle", "按开始\n开始抖动"));
 
     // Ok
     canvas_draw_icon(canvas, 63, 30, &I_Space_65x18);
@@ -65,15 +68,18 @@ static void hid_mouse_jiggler_stealth_draw_callback(Canvas* canvas, void* contex
     }
     canvas_draw_icon(canvas, 74, 34, &I_Ok_btn_9x9);
     if(model->running) {
-        elements_multiline_text_aligned(canvas, 91, 41, AlignLeft, AlignBottom, "Stop");
+        elements_multiline_text_aligned(
+            canvas, 91, 41, AlignLeft, AlignBottom, HID_UI_TEXT("Stop", "停止"));
     } else {
-        elements_multiline_text_aligned(canvas, 91, 41, AlignLeft, AlignBottom, "Start");
+        elements_multiline_text_aligned(
+            canvas, 91, 41, AlignLeft, AlignBottom, HID_UI_TEXT("Start", "开始"));
     }
     canvas_set_color(canvas, ColorBlack);
 
     // Back
     canvas_draw_icon(canvas, 74, 54, &I_Pin_back_arrow_10x8);
-    elements_multiline_text_aligned(canvas, 91, 62, AlignLeft, AlignBottom, "Quit");
+    elements_multiline_text_aligned(
+        canvas, 91, 62, AlignLeft, AlignBottom, HID_UI_TEXT("Quit", "退出"));
 }
 
 static void hid_mouse_jiggler_stealth_timer_callback(void* context) {

@@ -32,7 +32,7 @@ void findmy_scene_config_show_mac(VariableItem* item) {
     FindMy* app = variable_item_get_context(item);
     uint8_t index = variable_item_get_current_value_index(item);
     findmy_toggle_show_mac(app, index);
-    variable_item_set_current_value_text(item, app->state.show_mac ? "Yes" : "No");
+    variable_item_set_current_value_text(item, app->state.show_mac ? FINDMY_UI_TEXT("Yes", "是") : FINDMY_UI_TEXT("No", "否"));
     variable_item_set_current_value_index(item, app->state.show_mac);
 }
 
@@ -49,7 +49,7 @@ void findmy_scene_config_on_enter(void* context) {
 
     item = variable_item_list_add(
         var_item_list,
-        "Broadcast Interval",
+        FINDMY_UI_TEXT("Broadcast Interval", "广播间隔"),
         10,
         findmy_scene_config_broadcast_interval_changed,
         app);
@@ -60,25 +60,33 @@ void findmy_scene_config_on_enter(void* context) {
     variable_item_set_current_value_text(item, interval_str);
 
     item = variable_item_list_add(
-        var_item_list, "Transmit Power", 7, findmy_scene_config_transmit_power_changed, app);
+        var_item_list,
+        FINDMY_UI_TEXT("Transmit Power", "发射功率"),
+        7,
+        findmy_scene_config_transmit_power_changed,
+        app);
     variable_item_set_current_value_index(item, app->state.transmit_power);
     char power_str[7];
     snprintf(power_str, sizeof(power_str), "%ddBm", app->state.transmit_power);
     variable_item_set_current_value_text(item, power_str);
 
-    item = variable_item_list_add(var_item_list, "Register Tag", 0, NULL, NULL);
+    item = variable_item_list_add(
+        var_item_list, FINDMY_UI_TEXT("Register Tag", "注册标签"), 0, NULL, NULL);
 
-    item = variable_item_list_add(var_item_list, "Show MAC", 2, findmy_scene_config_show_mac, app);
+    item = variable_item_list_add(
+        var_item_list, FINDMY_UI_TEXT("Show MAC", "显示MAC"), 2, findmy_scene_config_show_mac, app);
     variable_item_set_current_value_index(item, app->state.show_mac);
-    variable_item_set_current_value_text(item, app->state.show_mac ? "Yes" : "No");
+    variable_item_set_current_value_text(item, app->state.show_mac ? FINDMY_UI_TEXT("Yes", "是") : FINDMY_UI_TEXT("No", "否"));
 
     item = variable_item_list_add(
         var_item_list,
-        "Matthew KuKanich, Thanks to Chapoly1305, WillyJL, OpenHaystack, Testers",
+        FINDMY_UI_TEXT(
+            "Matthew KuKanich, Thanks to Chapoly1305, WillyJL, OpenHaystack, Testers",
+            "Matthew KuKanich，感谢 Chapoly1305、WillyJL、OpenHaystack、测试者"),
         1,
         NULL,
         NULL);
-    variable_item_set_current_value_text(item, "Credits");
+    variable_item_set_current_value_text(item, FINDMY_UI_TEXT("Credits", "致谢"));
 
     variable_item_list_set_enter_callback(var_item_list, findmy_scene_config_callback, app);
 

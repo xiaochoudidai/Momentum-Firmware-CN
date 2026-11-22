@@ -1,5 +1,11 @@
 #pragma once
 
+#ifdef MOMENTUM_UI_LANG_ZH_CN
+#define HID_UI_TEXT(en, zh) (zh)
+#else
+#define HID_UI_TEXT(en, zh) (en)
+#endif
+
 #include <furi.h>
 #include <furi_hal_bt.h>
 #include <furi_hal_usb.h>

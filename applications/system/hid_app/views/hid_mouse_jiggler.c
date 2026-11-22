@@ -35,10 +35,11 @@ static void hid_mouse_jiggler_draw_callback(Canvas* canvas, void* context) {
 #endif
 
     canvas_set_font(canvas, FontPrimary);
-    elements_multiline_text_aligned(canvas, 27, 2, AlignLeft, AlignTop, "Mouse Jiggler");
+    elements_multiline_text_aligned(
+        canvas, 27, 2, AlignLeft, AlignTop, HID_UI_TEXT("Mouse Jiggler", "鼠标抖动器"));
 
     // Timeout
-    elements_multiline_text(canvas, AlignLeft, 26, "Interval (ms):");
+    elements_multiline_text(canvas, AlignLeft, 26, HID_UI_TEXT("Interval (ms):", "间隔(ms):"));
     canvas_set_font(canvas, FontSecondary);
     if(model->interval_idx != 0) canvas_draw_icon(canvas, 74, 19, &I_ButtonLeft_4x7);
     if(model->interval_idx != (int)COUNT_OF(intervals) - 1)
@@ -48,7 +49,8 @@ static void hid_mouse_jiggler_draw_callback(Canvas* canvas, void* context) {
     furi_string_free(interval_str);
 
     canvas_set_font(canvas, FontPrimary);
-    elements_multiline_text(canvas, AlignLeft, 40, "Press Start\nto jiggle");
+    elements_multiline_text(
+        canvas, AlignLeft, 40, HID_UI_TEXT("Press Start\nto jiggle", "按开始\n开始抖动"));
     canvas_set_font(canvas, FontSecondary);
 
     // Ok
@@ -59,15 +61,18 @@ static void hid_mouse_jiggler_draw_callback(Canvas* canvas, void* context) {
     }
     canvas_draw_icon(canvas, 74, 34, &I_Ok_btn_9x9);
     if(model->running) {
-        elements_multiline_text_aligned(canvas, 91, 41, AlignLeft, AlignBottom, "Stop");
+        elements_multiline_text_aligned(
+            canvas, 91, 41, AlignLeft, AlignBottom, HID_UI_TEXT("Stop", "停止"));
     } else {
-        elements_multiline_text_aligned(canvas, 91, 41, AlignLeft, AlignBottom, "Start");
+        elements_multiline_text_aligned(
+            canvas, 91, 41, AlignLeft, AlignBottom, HID_UI_TEXT("Start", "开始"));
     }
     canvas_set_color(canvas, ColorBlack);
 
     // Back
     canvas_draw_icon(canvas, 74, 54, &I_Pin_back_arrow_10x8);
-    elements_multiline_text_aligned(canvas, 91, 62, AlignLeft, AlignBottom, "Quit");
+    elements_multiline_text_aligned(
+        canvas, 91, 62, AlignLeft, AlignBottom, HID_UI_TEXT("Quit", "退出"));
 }
 
 static void hid_mouse_jiggler_timer_callback(void* context) {

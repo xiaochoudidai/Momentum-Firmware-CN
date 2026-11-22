@@ -56,7 +56,8 @@ static void hid_mouse_clicker_draw_callback(Canvas* canvas, void* context) {
 #endif
 
     canvas_set_font(canvas, FontPrimary);
-    elements_multiline_text_aligned(canvas, 17, 3, AlignLeft, AlignTop, "Mouse Clicker");
+    elements_multiline_text_aligned(
+        canvas, 17, 3, AlignLeft, AlignTop, HID_UI_TEXT("Mouse Clicker", "鼠标连点器"));
     canvas_set_font(canvas, FontSecondary);
 
     // Ok
@@ -68,13 +69,13 @@ static void hid_mouse_clicker_draw_callback(Canvas* canvas, void* context) {
     const char* btn_label;
     switch(model->btn) {
     case HID_MOUSE_BTN_LEFT:
-        btn_label = "Left";
+        btn_label = HID_UI_TEXT("Left", "左");
         break;
     case HID_MOUSE_BTN_WHEEL:
-        btn_label = "Middle";
+        btn_label = HID_UI_TEXT("Middle", "中");
         break;
     case HID_MOUSE_BTN_RIGHT:
-        btn_label = "Right";
+        btn_label = HID_UI_TEXT("Right", "右");
         break;
     default:
         furi_crash();
@@ -90,18 +91,20 @@ static void hid_mouse_clicker_draw_callback(Canvas* canvas, void* context) {
     canvas_draw_icon(canvas, 69, 29, &I_Ok_btn_9x9);
 
     if(model->running) {
-        elements_multiline_text_aligned(canvas, 86, 37, AlignLeft, AlignBottom, "Stop");
+        elements_multiline_text_aligned(
+            canvas, 86, 37, AlignLeft, AlignBottom, HID_UI_TEXT("Stop", "停止"));
     } else {
-        elements_multiline_text_aligned(canvas, 86, 37, AlignLeft, AlignBottom, "Start");
+        elements_multiline_text_aligned(
+            canvas, 86, 37, AlignLeft, AlignBottom, HID_UI_TEXT("Start", "开始"));
     }
     canvas_set_color(canvas, ColorBlack);
 
     // Clicks/s
     char label[20];
     if(model->rate) {
-        snprintf(label, sizeof(label), "%d clicks/s", model->rate);
+        snprintf(label, sizeof(label), HID_UI_TEXT("%d clicks/s", "%d 次/秒"), model->rate);
     } else {
-        snprintf(label, sizeof(label), "max clicks/s");
+        snprintf(label, sizeof(label), HID_UI_TEXT("max clicks/s", "最大 次/秒"));
     }
     elements_multiline_text_aligned(canvas, 28, 37, AlignCenter, AlignBottom, label);
 
@@ -110,7 +113,8 @@ static void hid_mouse_clicker_draw_callback(Canvas* canvas, void* context) {
 
     // Back
     canvas_draw_icon(canvas, 0, 54, &I_Pin_back_arrow_10x8);
-    elements_multiline_text_aligned(canvas, 13, 62, AlignLeft, AlignBottom, "Exit");
+    elements_multiline_text_aligned(
+        canvas, 13, 62, AlignLeft, AlignBottom, HID_UI_TEXT("Exit", "退出"));
 }
 
 static void hid_mouse_clicker_timer_callback(void* context) {

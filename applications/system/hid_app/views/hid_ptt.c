@@ -494,71 +494,119 @@ static void hid_ptt_populate_help(HidPushToTalk* hid_ptt, uint32_t appIndex) {
     char* app_specific_help = "";
     switch(appIndex) {
     case HidPushToTalkAppIndexGoogleMeet:
-        app_specific_help =
+        app_specific_help = HID_UI_TEXT(
             "Google Meet:\n"
             "This feature is off by default in your audio settings "
             "and may not work for Windows users who use their screen "
-            "reader. In this situation, the spacebar performs a different action.\n\n";
+            "reader. In this situation, the spacebar performs a different action.\n\n",
+            "Google Meet:\n"
+            "此功能默认在音频设置中为关闭状态，"
+            "使用屏幕阅读器的 Windows 用户可能无法使用。"
+            "这种情况下空格键会执行其他操作。\n\n");
         break;
     case HidPushToTalkAppIndexGoogleMeetGlobal:
-        app_specific_help = "Google Meet (Global):\n"
-                            "1. Install \"Google Meet - Global Shortcuts\" extension.\n"
-                            "2. Open chrome://extensions/shortcuts.\n"
-                            "3. Set 'Toggle microphone' to Cmd+Ctrl+7 and enable Global.\n"
-                            "4. Set 'Toggle camera' to Cmd+Ctrl+8 and enable Global.\n"
-                            "5. Set 'Raise hand' to Cmd+Ctrl+9 and enable Global.\n\n";
+        app_specific_help = HID_UI_TEXT(
+            "Google Meet (Global):\n"
+            "1. Install \"Google Meet - Global Shortcuts\" extension.\n"
+            "2. Open chrome://extensions/shortcuts.\n"
+            "3. Set 'Toggle microphone' to Cmd+Ctrl+7 and enable Global.\n"
+            "4. Set 'Toggle camera' to Cmd+Ctrl+8 and enable Global.\n"
+            "5. Set 'Raise hand' to Cmd+Ctrl+9 and enable Global.\n\n",
+            "Google Meet (Global):\n"
+            "1. 安装 \"Google Meet - Global Shortcuts\" 扩展。\n"
+            "2. 打开 chrome://extensions/shortcuts。\n"
+            "3. 将 'Toggle microphone' 设为 Cmd+Ctrl+7 并启用全局。\n"
+            "4. 将 'Toggle camera' 设为 Cmd+Ctrl+8 并启用全局。\n"
+            "5. 将 'Raise hand' 设为 Cmd+Ctrl+9 并启用全局。\n\n");
         break;
     case HidPushToTalkAppIndexDiscord:
-        app_specific_help = "Discord:\n"
-                            "1. Under App Settings, click Voice & Video. Under Input Mode, "
-                            "check the box next to Push to Talk.\n"
-                            "2. Scroll down to SHORTCUT, click Record Keybinder.\n"
-                            "3. Press PTT in the app to bind it."
-                            "4. Go to Keybinds and assign mute button.\n\n";
+        app_specific_help = HID_UI_TEXT(
+            "Discord:\n"
+            "1. Under App Settings, click Voice & Video. Under Input Mode, "
+            "check the box next to Push to Talk.\n"
+            "2. Scroll down to SHORTCUT, click Record Keybinder.\n"
+            "3. Press PTT in the app to bind it."
+            "4. Go to Keybinds and assign mute button.\n\n",
+            "Discord:\n"
+            "1. 在应用设置中点击语音与视频，在输入模式下"
+            "勾选 Push to Talk 旁边的复选框。\n"
+            "2. 向下滚动到快捷键，点击录制键位。\n"
+            "3. 在应用中按 PTT 进行绑定。"
+            "4. 前往键位设置并分配静音按钮。\n\n");
         break;
     case HidPushToTalkAppIndexTeamSpeak:
-        app_specific_help = "TeamSpeak:\n"
-                            "To make keys working bind them in TeamSpeak settings.\n\n";
+        app_specific_help = HID_UI_TEXT(
+            "TeamSpeak:\n"
+            "To make keys working bind them in TeamSpeak settings.\n\n",
+            "TeamSpeak:\n"
+            "请在 TeamSpeak 设置中绑定按键才能生效。\n\n");
         break;
     case HidPushToTalkAppIndexTeams:
-        app_specific_help =
+        app_specific_help = HID_UI_TEXT(
             "Teams:\n"
-            "Go to Settings > Privacy. Make sure Keyboard shortcut to unmute is toggled on.\n\n";
+            "Go to Settings > Privacy. Make sure Keyboard shortcut to unmute is toggled on.\n\n",
+            "Teams:\n"
+            "前往设置 > 隐私，确保开启键盘快捷键取消静音。\n\n");
         break;
     case HidPushToTalkAppIndexZoomGlobal:
-        app_specific_help = "Zoom (Global):\n"
-                            "1. Go to Settings > Keyboard Shortcuts.\n"
-                            "2. Find the 'Mute/Unmute' shortcut and click 'Edit'.\n"
-                            "3. Press the Mute button in the app to bind it.\n"
-                            "4. Check global checkbox.\n"
-                            "5. Repeat for video and hand shortcuts.\n"
-                            "6. Long-press < to send Enter key.\n\n";
+        app_specific_help = HID_UI_TEXT(
+            "Zoom (Global):\n"
+            "1. Go to Settings > Keyboard Shortcuts.\n"
+            "2. Find the 'Mute/Unmute' shortcut and click 'Edit'.\n"
+            "3. Press the Mute button in the app to bind it.\n"
+            "4. Check global checkbox.\n"
+            "5. Repeat for video and hand shortcuts.\n"
+            "6. Long-press < to send Enter key.\n\n",
+            "Zoom (Global):\n"
+            "1. 前往设置 > 键盘快捷键。\n"
+            "2. 找到 'Mute/Unmute' 快捷键并点击 'Edit'。\n"
+            "3. 在应用中按静音按钮进行绑定。\n"
+            "4. 勾选全局复选框。\n"
+            "5. 对视频和举手快捷键重复操作。\n"
+            "6. 长按 < 发送回车键。\n\n");
         break;
     case HidPushToTalkAppIndexZoom:
-        app_specific_help = "Zoom:\n"
-                            "1. Go to Settings > Keyboard Shortcuts.\n"
-                            "2. Find the 'Mute/Unmute' shortcut and click 'Edit'.\n"
-                            "3. Press the Mute button in the app to bind it.\n"
-                            "4. Repeat for video and hand shortcuts.\n"
-                            "5. Long-press < to send Enter key.\n\n";
+        app_specific_help = HID_UI_TEXT(
+            "Zoom:\n"
+            "1. Go to Settings > Keyboard Shortcuts.\n"
+            "2. Find the 'Mute/Unmute' shortcut and click 'Edit'.\n"
+            "3. Press the Mute button in the app to bind it.\n"
+            "4. Repeat for video and hand shortcuts.\n"
+            "5. Long-press < to send Enter key.\n\n",
+            "Zoom:\n"
+            "1. 前往设置 > 键盘快捷键。\n"
+            "2. 找到 'Mute/Unmute' 快捷键并点击 'Edit'。\n"
+            "3. 在应用中按静音按钮进行绑定。\n"
+            "4. 对视频和举手快捷键重复操作。\n"
+            "5. 长按 < 发送回车键。\n\n");
         break;
     }
     char* left_button_help = "";
     if(appIndex == HidPushToTalkAppIndexZoom || appIndex == HidPushToTalkAppIndexZoomGlobal) {
-        left_button_help = "Long-press < sends Enter.\n";
+        left_button_help = HID_UI_TEXT("Long-press < sends Enter.\n", "长按 < 发送回车。\n");
     }
     FuriString* msg = furi_string_alloc();
     furi_string_cat_printf(
         msg,
-        "%sGeneral:\n"
-        "To operate properly flipper microphone "
-        "status must be in sync with your computer.\n"
-        "Hold > to change mic status.\n"
-        "%s"
-        "Long-press OK in menu to open this help.\n"
-        "Press BACK to switch mic on/off.\n"
-        "Hold 'o' for PTT mode (mic will be off once you release 'o')\n"
-        "Hold BACK to exit.",
+        HID_UI_TEXT(
+            "%sGeneral:\n"
+            "To operate properly flipper microphone "
+            "status must be in sync with your computer.\n"
+            "Hold > to change mic status.\n"
+            "%s"
+            "Long-press OK in menu to open this help.\n"
+            "Press BACK to switch mic on/off.\n"
+            "Hold 'o' for PTT mode (mic will be off once you release 'o')\n"
+            "Hold BACK to exit.",
+            "%s通用:\n"
+            "为正常工作，Flipper 麦克风"
+            "状态必须与电脑保持同步。\n"
+            "按住 > 切换麦克风状态。\n"
+            "%s"
+            "长按菜单中的 OK 打开此帮助。\n"
+            "按 BACK 切换麦克风开/关。\n"
+            "按住 'o' 进入 PTT 模式（松开 'o' 后麦克风关闭）\n"
+            "按住 BACK 退出。"),
         app_specific_help,
         left_button_help);
     widget_add_text_scroll_element(hid_ptt->help, 0, 0, 128, 64, furi_string_get_cstr(msg));
@@ -1039,7 +1087,12 @@ static void hid_ptt_draw_callback(Canvas* canvas, void* context) {
     }
     canvas_set_font(canvas, FontPrimary);
     elements_multiline_text_aligned(
-        canvas, x_ptt + 2 + x_ptt_margin / 2, y_2 + 13, AlignLeft, AlignBottom, "PTT");
+        canvas,
+        x_ptt + 2 + x_ptt_margin / 2,
+        y_2 + 13,
+        AlignLeft,
+        AlignBottom,
+        HID_UI_TEXT("PTT", "PTT"));
     canvas_set_font(canvas, FontSecondary);
     canvas_set_color(canvas, ColorBlack);
 }
@@ -1188,208 +1241,209 @@ HidPushToTalk* hid_ptt_alloc(Hid* hid) {
         true);
 
     FURI_LOG_I(TAG, "Calling adding list");
-    ptt_menu_add_list(hid->hid_ptt_menu, "macOS", HidPushToTalkMacOS);
-    ptt_menu_add_list(hid->hid_ptt_menu, "Win/Linux", HidPushToTalkLinux);
+    ptt_menu_add_list(hid->hid_ptt_menu, HID_UI_TEXT("macOS", "macOS"), HidPushToTalkMacOS);
+    ptt_menu_add_list(
+        hid->hid_ptt_menu, HID_UI_TEXT("Win/Linux", "Win/Linux"), HidPushToTalkLinux);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Google Meet",
+        HID_UI_TEXT("Google Meet", "Google Meet"),
         HidPushToTalkAppIndexGoogleMeet,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "Google Meet",
+        HID_UI_TEXT("Google Meet", "Google Meet"),
         HidPushToTalkAppIndexGoogleMeet,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Google Meet Global",
+        HID_UI_TEXT("Google Meet Global", "Google Meet Global"),
         HidPushToTalkAppIndexGoogleMeetGlobal,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Google Hangouts",
+        HID_UI_TEXT("Google Hangouts", "Google Hangouts"),
         HidPushToTalkAppIndexGoogleHangouts,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "Google Hangouts",
+        HID_UI_TEXT("Google Hangouts", "Google Hangouts"),
         HidPushToTalkAppIndexGoogleHangouts,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Discord",
+        HID_UI_TEXT("Discord", "Discord"),
         HidPushToTalkAppIndexDiscord,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "Discord",
+        HID_UI_TEXT("Discord", "Discord"),
         HidPushToTalkAppIndexDiscord,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "FaceTime",
+        HID_UI_TEXT("FaceTime", "FaceTime"),
         HidPushToTalkAppIndexFaceTime,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Gather",
+        HID_UI_TEXT("Gather", "Gather"),
         HidPushToTalkAppIndexGather,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "Gather",
+        HID_UI_TEXT("Gather", "Gather"),
         HidPushToTalkAppIndexGather,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Jamulus",
+        HID_UI_TEXT("Jamulus", "Jamulus"),
         HidPushToTalkAppIndexJamulus,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "Jamulus",
+        HID_UI_TEXT("Jamulus", "Jamulus"),
         HidPushToTalkAppIndexJamulus,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Signal",
+        HID_UI_TEXT("Signal", "Signal"),
         HidPushToTalkAppIndexSignal,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "Signal",
+        HID_UI_TEXT("Signal", "Signal"),
         HidPushToTalkAppIndexSignal,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Skype",
+        HID_UI_TEXT("Skype", "Skype"),
         HidPushToTalkAppIndexSkype,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "Skype",
+        HID_UI_TEXT("Skype", "Skype"),
         HidPushToTalkAppIndexSkype,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Slack Call",
+        HID_UI_TEXT("Slack Call", "Slack Call"),
         HidPushToTalkAppIndexSlackCall,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "Slack Call",
+        HID_UI_TEXT("Slack Call", "Slack Call"),
         HidPushToTalkAppIndexSlackCall,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Slack Huddle",
+        HID_UI_TEXT("Slack Huddle", "Slack Huddle"),
         HidPushToTalkAppIndexSlackHubble,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "Slack Huddle",
+        HID_UI_TEXT("Slack Huddle", "Slack Huddle"),
         HidPushToTalkAppIndexSlackHubble,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "TeamSpeak",
+        HID_UI_TEXT("TeamSpeak", "TeamSpeak"),
         HidPushToTalkAppIndexTeamSpeak,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "TeamSpeak",
+        HID_UI_TEXT("TeamSpeak", "TeamSpeak"),
         HidPushToTalkAppIndexTeamSpeak,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Teams",
+        HID_UI_TEXT("Teams", "Teams"),
         HidPushToTalkAppIndexTeams,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "Teams",
+        HID_UI_TEXT("Teams", "Teams"),
         HidPushToTalkAppIndexTeams,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Zoom",
+        HID_UI_TEXT("Zoom", "Zoom"),
         HidPushToTalkAppIndexZoom,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Zoom Global",
+        HID_UI_TEXT("Zoom Global", "Zoom Global"),
         HidPushToTalkAppIndexZoomGlobal,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "Zoom",
+        HID_UI_TEXT("Zoom", "Zoom"),
         HidPushToTalkAppIndexZoom,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkMacOS,
-        "Webex",
+        HID_UI_TEXT("Webex", "Webex"),
         HidPushToTalkAppIndexWebex,
         hid_ptt_menu_callback,
         hid_ptt);
     ptt_menu_add_item_to_list(
         hid->hid_ptt_menu,
         HidPushToTalkLinux,
-        "Webex",
+        HID_UI_TEXT("Webex", "Webex"),
         HidPushToTalkAppIndexWebex,
         hid_ptt_menu_callback,
         hid_ptt);

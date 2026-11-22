@@ -17,13 +17,17 @@ void findmy_scene_config_tagtype_on_enter(void* context) {
     VariableItemList* var_item_list = app->var_item_list;
     VariableItem* item;
 
-    variable_item_list_set_header(var_item_list, "Choose tag type");
+    variable_item_list_set_header(
+        var_item_list, FINDMY_UI_TEXT("Choose tag type", "选择标签类型"));
 
-    item = variable_item_list_add(var_item_list, "Apple AirTag", 0, NULL, NULL);
+    item = variable_item_list_add(
+        var_item_list, FINDMY_UI_TEXT("Apple AirTag", "Apple AirTag"), 0, NULL, NULL);
 
-    item = variable_item_list_add(var_item_list, "Samsung SmartTag", 0, NULL, NULL);
+    item = variable_item_list_add(
+        var_item_list, FINDMY_UI_TEXT("Samsung SmartTag", "Samsung SmartTag"), 0, NULL, NULL);
 
-    item = variable_item_list_add(var_item_list, "Tile SmartTag", 0, NULL, NULL);
+    item = variable_item_list_add(
+        var_item_list, FINDMY_UI_TEXT("Tile SmartTag", "Tile SmartTag"), 0, NULL, NULL);
 
     UNUSED(item);
 
